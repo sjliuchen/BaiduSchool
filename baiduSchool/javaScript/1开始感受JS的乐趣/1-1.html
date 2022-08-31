@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+    <input id="first-number" type="number" value="0" placeholder="第一个数字" />
+    <input
+            id="second-number"
+            type="number"
+            value="0"
+            placeholder="第二个数字"
+    />
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+        window.onload = function () {
+            var add = document.getElementById('add-btn');
+            var minus = document.getElementById('minus-btn');
+            var times = document.getElementById('times-btn');
+            var divide = document.getElementById('divide-btn');
+            var firstNumber = document.getElementById('first-number');
+            var secondNumber = document.getElementById('second-number');
+            var result;
+            var resultText = document.getElementById('result');
+
+
+            add.addEventListener('click', addResult);
+            minus.addEventListener('click', minusResult);
+            times.addEventListener('click', timesResult);
+            divide.addEventListener('click', divideResult);
+
+            function addResult() {
+                result = Number(firstNumber.value) + Number(secondNumber.value);
+                resultText.innerHTML = '运算结果: ' + result;
+                console.log(firstNumber.value);
+                console.log(typeof firstNumber);
+                console.log(secondNumber.value);
+                console.log(result);
+                console.log(resultText.textContent);
+
+            }
+
+            function minusResult() {
+                result = Number(firstNumber.value) - Number(secondNumber.value);
+                resultText.textContent = '运算结果: ' + result;
+                console.log('-' + result);
+            }
+
+            function timesResult() {
+                result = Number(firstNumber.value) * Number(secondNumber.value);
+                resultText.textContent = '运算结果: ' + result;
+                console.log('*' + result);
+            }
+
+            function divideResult() {
+                var divisor = Number(secondNumber.value);
+                // 如果输入除数为0，抛出异常
+                try {
+                    if (divisor == 0) {
+                        throw '除数不能为0！';
+                    }
+                } catch (err) {
+                    alert(err + '请重新输入除数。');
+                    // resultText.textContent = err + '请重新选择除数';
+                    console.log(err);
+
+                }
+                result = Number(firstNumber.value) / Number(secondNumber.value);
+                resultText.textContent = '运算结果: ' + result;
+                console.log('/' + result);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate The Amount</title>
+</head>
+<body>
+    <div class="push">
+        <div>Amount:&nbsp<input type="text" class="amount" style="width: 50px">&nbsp$</div>
+        <br>
+        <div>vip status：
+            <select id="s1">
+                <option>yes</option>
+                <option>no</option>
+            </select>
+        </div>
+        <br><br>
+        <p><span class="printprice"></span></p>
+        <div class="end"><input type="submit" value="Calculate" onclick="calculate()"></div>
+    </div>
+    <script>
+        function calculate() {
+            var amount = document.getElementsByClassName('amount')[0].value;
+            var printprice = document.getElementsByClassName('printprice')[0];
+            var s1 = document.getElementById("s1");
+            var index = s1.selectedIndex;
+            var text = s1.options[index].text;
+            if (text == 'yes') {
+                if (amount >= 300 / 0.98) {
+                    printprice.innerHTML = amount * 0.98 - 30;
+                } else if (amount >= 300 && amount < 300 / 0.98) {
+                    printprice.innerHTML = amount * 0.98 - 10;
+                } else if (amount >= 200 / 0.98 && amount < 300) {
+                    printprice.innerHTML = amount * 0.98 - 10;
+                } else if (amount >= 200 && amount < 200 / 0.98) {
+                    printprice.innerHTML = amount * 0.98 - 5;
+                } else if (amount >= 100 / 0.98 && amount < 200) {
+                    printprice.innerHTML = amount * 0.98 - 5;
+                } else if (amount >= 0 && amount < 100/0.98) {
+                    printprice.innerHTML = amount * 0.98
+                }
+            } else {
+                if (amount >= 300) {
+                    printprice.innerHTML = amount - 30;
+                } else if (amount >= 200 && amount < 300) {
+                    printprice.innerHTML = amount - 10;
+                } else if (amount >= 100 && amount < 200) {
+                    printprice.innerHTML = amount - 5;
+                } else if (amount >= 0 && amount < 100) {
+                    printprice.innerHTML = amount;
+                }
+            }
+        }
+    </script>
+</body>
+<style>
+    .push{
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+</style>
+</html>
